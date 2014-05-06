@@ -1,10 +1,10 @@
 === Blackjack Lite ===
 Contributors: manojtd
 Donate link: http://buy.thulasidas.com/blackjack
-Tags: blackjack
+Tags: blackjack, casino, gamble, gambling, poker, game, card game
 Requires at least: 2.5
 Tested up to: 3.9
-Stable tag: 1.00
+Stable tag: 1.01
 License: GPL2 or later
 
 Blackjack Lite lets you display a simple Blackjack game to your readers.
@@ -25,13 +25,15 @@ Blackjack Lite lets you display a simple Blackjack game to your readers.
 
 A [pro version](http://buy.thulasidas.com/blackjack "Pro Version of Blackjack for $4.99") of this plugin is being developed with the following added features:
 
-1. Color customization to match your theme.
-2. Strategy hints on each hand, to teach your reader how to play the game.
-3. Other features related to simulation, winnings accumulation etc. that you can sell to your readers to make extra revenue.
+1. Fancier colors and borders.
+2. Sticky bet -- the game remembers your bets.
+3. More accurate payouts.
+4. Strategy hints on each hand, to teach your reader how to play the game (WIP).
+5. Other features related to simulation, winnings accumulation etc. that you can sell to your readers to make extra revenue (WIP).
 
 == Upgrade Notice ==
 
-Initial release.
+Minor fixes and documentation changes.
 
 == Installation ==
 
@@ -56,6 +58,7 @@ These rules are not implemented yet. They will be included in later versions (or
 
 == Change Log ==
 
+* V1.01: Minor fixes and documentation changes. [May 7, 2014]
 * V1.00: Initial release. [Apr 20, 2014]
 
 == Credit ==

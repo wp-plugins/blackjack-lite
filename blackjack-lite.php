@@ -4,7 +4,7 @@
   Plugin Name: Blackjack Lite
   Plugin URI: http://www.thulasidas.com/plugins/blackjack
   Description: <em>Lite Version</em>: Blackjack game. No complicated setup, no server load or submit, just a shortcode on a page!
-  Version: 1.00
+  Version: 1.01
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */
@@ -27,8 +27,10 @@
  */
 
 if (class_exists("Blackjack")) {
-  // Another version is probably installed. Ask the user to deactivate it.
-  die(sprintf(__("%s: Another version of this plugin is active.<br />Please deactivate it before activating %s.", "easy-common"), "<strong><em>Blackjack</em></strong>", "<strong><em>Blackjack</em></strong>"));
+  $plg = "Blackjack Lite";
+  $lite = plugin_basename(__FILE__);
+  include_once('ezDenyLite.php');
+  ezDenyLite($plg, $lite);
 }
 else {
 
@@ -264,12 +266,14 @@ if (class_exists("Blackjack")) {
     add_filter('the_posts', array("Blackjack", "findShortCode"));
     if (is_admin()) {
 
-      function blackjack_ap() {
-        global $blackjack;
-        if (function_exists('add_options_page')) {
+      if (!function_exists('blackjack_ap')) {
+
+        function blackjack_ap() {
+          global $blackjack;
           $mName = 'Blackjack';
           add_options_page($mName, $mName, 'activate_plugins', basename(__FILE__), array($blackjack, 'printAdminPage'));
         }
+
       }
 
       add_action('admin_menu', 'blackjack_ap');
