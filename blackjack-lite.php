@@ -1,10 +1,10 @@
 <?php
 
 /*
-  Plugin Name: Blackjack Lite
+  Plugin Name: Blackjack
   Plugin URI: http://www.thulasidas.com/plugins/blackjack
   Description: <em>Lite Version</em>: Blackjack game. No complicated setup, no server load or submit, just a shortcode on a page!
-  Version: 1.02
+  Version: 1.03
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */

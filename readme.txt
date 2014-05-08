@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/blackjack
 Tags: blackjack, casino, gamble, gambling, poker, game, card game
 Requires at least: 2.5
 Tested up to: 3.9
-Stable tag: 1.02
+Stable tag: 1.03
 License: GPL2 or later
 
 Blackjack Lite lets you display a simple Blackjack game to your readers.
@@ -34,7 +34,7 @@ A [pro version](http://buy.thulasidas.com/blackjack "Pro Version of Blackjack fo
 
 == Upgrade Notice ==
 
-Adding another screenshot.
+Minor CSS fixes.
 
 == Installation ==
 
@@ -60,6 +60,7 @@ These rules are not implemented yet. They will be included in later versions (or
 
 == Change Log ==
 
+* V1.03: Minor CSS fixes. [May 8, 2013]
 * V1.02: Adding another screenshot. [May 8, 2014]
 * V1.01: Minor fixes and documentation changes. [May 7, 2014]
 * V1.00: Initial release. [Apr 20, 2014]
