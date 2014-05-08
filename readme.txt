@@ -1,10 +1,10 @@
-=== Blackjack Lite ===
+=== Blackjack ===
 Contributors: manojtd
 Donate link: http://buy.thulasidas.com/blackjack
 Tags: blackjack, casino, gamble, gambling, poker, game, card game
 Requires at least: 2.5
 Tested up to: 3.9
-Stable tag: 1.01
+Stable tag: 1.02
 License: GPL2 or later
 
 Blackjack Lite lets you display a simple Blackjack game to your readers.
@@ -23,17 +23,18 @@ Blackjack Lite lets you display a simple Blackjack game to your readers.
 
 = Pro Version =
 
-A [pro version](http://buy.thulasidas.com/blackjack "Pro Version of Blackjack for $4.99") of this plugin is being developed with the following added features:
+A [pro version](http://buy.thulasidas.com/blackjack "Pro Version of Blackjack for $4.99") of this plugin is available with the following added features:
 
 1. Fancier colors and borders.
 2. Sticky bet -- the game remembers your bets.
-3. More accurate payouts.
-4. Strategy hints on each hand, to teach your reader how to play the game (WIP).
-5. Other features related to simulation, winnings accumulation etc. that you can sell to your readers to make extra revenue (WIP).
+3. More accurate bets and payouts -- A hand cannot be dealt without placing a bet, 3 to 2 payout on Blackjack.
+4. Strategy hints on each hand, to teach your reader how to play the game.
+5. Other features related to simulation, winnings accumulation etc. that you can sell to your readers to make extra revenue (Work in Progress).
+6. In-app purchase of chips with configurable pricing (Work in Progress).
 
 == Upgrade Notice ==
 
-Minor fixes and documentation changes.
+Adding another screenshot.
 
 == Installation ==
 
@@ -48,7 +49,8 @@ To use the plugin, use the shortcode `[blackjack]`. If you want to provide a tit
 
 == Screenshots ==
 
-1. Blackjack Game.
+1. Blackjack Game in the lite version.
+2. Blackjack Game in the Pro version.
 
 == Frequently Asked Questions ==
 
@@ -58,6 +60,7 @@ These rules are not implemented yet. They will be included in later versions (or
 
 == Change Log ==
 
+* V1.02: Adding another screenshot. [May 8, 2014]
 * V1.01: Minor fixes and documentation changes. [May 7, 2014]
 * V1.00: Initial release. [Apr 20, 2014]
 
