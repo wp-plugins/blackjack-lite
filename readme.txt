@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/blackjack
 Tags: blackjack, casino, gamble, gambling, poker, game, card game
 Requires at least: 2.5
 Tested up to: 3.9
-Stable tag: 1.03
+Stable tag: 1.04
 License: GPL2 or later
 
 Blackjack Lite lets you display a simple Blackjack game to your readers.
@@ -12,6 +12,8 @@ Blackjack Lite lets you display a simple Blackjack game to your readers.
 == Description ==
 
 *Blackjack Lite* is a quick and easy plugin to present an attractive Blackjack game to your readers. It is based on HTML5/jQuery, and the whole game is played on your reader's browser. Your server is gets no extra load, nor is anything stored in your database.
+
+See a [live demo](http://www.thulasidas.com/2014-05/learn-to-play-blackjack.htm "Click to visit a live demo site").
 
 = Features =
 
@@ -60,6 +62,7 @@ These rules are not implemented yet. They will be included in later versions (or
 
 == Change Log ==
 
+* V1.04: Documentation changes only. [May 14, 2014]
 * V1.03: Minor CSS fixes. [May 8, 2013]
 * V1.02: Adding another screenshot. [May 8, 2014]
 * V1.01: Minor fixes and documentation changes. [May 7, 2014]
