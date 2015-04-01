@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/blackjack
 Tags: blackjack, casino, gamble, gambling, poker, game, card game
 Requires at least: 2.5
 Tested up to: 4.1
-Stable tag: 1.20
+Stable tag: 1.30
 License: GPL2 or later
 
 Blackjack Lite lets you display a simple Blackjack game to your readers.
@@ -62,6 +62,7 @@ These rules are not implemented yet. They will be included in later versions (or
 
 == Change Log ==
 
+* V1.30: Adding more checks on player going broke in the pro version. Admin page improvements. [Mar 30, 2015]
 * V1.20: Compatibility with WP4.1. [Jan 8, 2015]
 * V1.11: Minor change to the admin interface. [Sep 9, 2011]
 * V1.10: Langauge updates. Compatibility with WP4.0. [Sep 6, 2014]

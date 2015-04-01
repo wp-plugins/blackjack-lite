@@ -4,7 +4,7 @@
   Plugin Name: Blackjack
   Plugin URI: http://www.thulasidas.com/plugins/blackjack
   Description: <em>Lite Version</em>: Blackjack game. No complicated setup, no server load or submit, just a shortcode on a page!
-  Version: 1.20
+  Version: 1.30
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */
@@ -149,6 +149,7 @@ else {
     function mkDefaultOptions() {
       $options = array();
       $options['showCredit'] = false;
+      $options['kill_author'] = false;
       return $options;
     }
 
@@ -163,6 +164,7 @@ else {
       if (isset($_POST['saveChanges'])) {
         $this->adminMsg = '<div class="updated"><p><strong>Options saved.</strong></p> </div>';
         $this->options['showCredit'] = isset($_POST['showCredit']);
+        $this->options['kill_author'] = isset($_POST['kill_author']);
         update_option($this->optionName, $this->options);
       }
     }
@@ -180,6 +182,12 @@ else {
       else {
         $showCredit = "";
       }
+      if ($this->options['kill_author']) {
+        $kill_author = "checked='checked'";
+      }
+      else {
+        $kill_author = "";
+      }
 
       echo <<<EOF1
 <script type="text/javascript" src="{$this->plgURL}/wz_tooltip.js"></script>
@@ -191,12 +199,12 @@ else {
 <!--  Help Info here -->
 <ul style="padding-left:10px;list-style-type:circle; list-style-position:inside;" >
 <li>
-<a href="#" title="Click for help" onclick="TagToTip('help0',WIDTH, 450, TITLE, 'How to Use it', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 15, 5])">
+<a href="#" title="Click for help" onclick="TagToTip('help0',WIDTH, 300, TITLE, 'How to Use it', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 5])">
 How to use this plugin?
 </a>
 </li>
 <li>
-<a href="#" title="Click for help" onclick="TagToTip('help2',WIDTH, 450, TITLE, 'Color Customization', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 15, 5])">
+<a href="#" title="Click for help" onclick="TagToTip('help2',WIDTH, 300, TITLE, 'Color Customization', STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 5, 5])">
 How can I change the colors?
 </a>
 </li>
@@ -208,7 +216,12 @@ EOF1;
       echo <<<EOF2
 </tr>
 <tr><td colspan="3">
-<label for="showCredit" style="color:#e00;"><input type="checkbox" id="showCredit"  name="showCredit" $showCredit /> &nbsp; Show a tiny credit link at the bottom of the game. (Please consider showing it if you would like to support this plugin. Thanks!)</label>
+<h3>Blackjack Plugin Options</h3>
+<label for="showCredit" style="color:#e00;" onmouseover="Tip('If you would like to support this plugin development, you can show a tiny credit link below the game display.', WIDTH, 240, TITLE, '', FIX, [this, 5, 5])" onmouseout="UnTip()"><input type="checkbox" id="showCredit"  name="showCredit" $showCredit /> &nbsp; Show a tiny credit link at the bottom of the game.</label>
+<br /><b>
+<label for='kill_author' onmouseover="Tip('If you find the author links and ads on the plugin admin page distracting or annoying, you can suppress them by checking this box. Please remember to save your options after checking.', WIDTH, 240, TITLE, '', FIX, [this, 5, 5])" onmouseout="UnTip()">
+<input type='checkbox' id='kill_author' name='kill_author' $kill_author /> &nbsp; Kill author links on the admin page?
+</label>
 </td></tr>
 </table>
 <div class="submit">
@@ -217,12 +230,12 @@ EOF1;
 </form>
 <hr />
 <div id="help0" style='display:none;'>
-You use the plugin with the help of a shortcode. You create a new post or page and type in just <code>[blackjack]</code>. Visit this post/page with the plugin active, and you will see the game displayed.
+You use the plugin with the help of a shortcode. You create a new post or page and type in just <code>[blackjack]</code>. Visit this post/page with the plugin active, and you will see the game displayed.<br>
   If you would like to change the title, use the form <code>[blackjack]Your New Title[/blackjack]</code>.
 </div>
 <div id="help2" style='display:none;'>
-<p>In the Pro version, you can tweak the colors using the color pickers below.</p>
-<p>If you prefer to stay with the Lite version, you can change the game colors by editing the style file <code>blackjack.css</code> in the plugin folder.</p>
+[Work in Progress] In the Pro version, you will be able to tweak the colors using the color pickers.<br>
+If you prefer to stay with the Lite version, you can change the game colors by editing the style file <code>blackjack.css</code> in the plugin folder.
 </div>
 EOF2;
       echo "<form method='post'>";
