@@ -140,7 +140,7 @@ ENDINVITE;
         $plgKey = $slug;
       }
       $plgKey = str_replace(array('-lite', '-pro'), "", $plgKey);
-      switch($plgKey) {
+      switch ($plgKey) {
         case 'easy-latex':
           $plgKey = 'easy-wp-latex-lite';
           break;
@@ -207,11 +207,10 @@ function hideme() {
 ENDRATING;
     }
 
-    function renderHeadText() {
+    function renderHeadText($isPro = false) {
       $plg = $this->plg;
       $slug = $this->slug;
       $value = '<em><strong>' . $plg['value'] . '</strong></em>';
-      $toolTip = $plg['title'];
       $price = $plg['price'];
       $onclick = "class='popup'";
       $s1 = sprintf(__('Download the Lite version of %s', 'easy-common'), $value);
@@ -219,10 +218,15 @@ ENDRATING;
       $s3 = sprintf(__('Buy the Pro version of %s for $%.2f', 'easy-common'), $plg['value'], $price);
       $s4 = __('Instant download link.', 'easy-common');
       $s5 = __('Pro Version', 'easy-common');
-      $moreInfo = "$s2 and <b><a href='http://buy.thulasidas.com/$slug' title='$s3. $s4' $onclick>$s5</a></b>";
-      $toolTip .= addslashes('<br />' . $moreInfo);
       $why = addslashes($plg['pro']);
-      $version = 'Lite';
+      if ($isPro) {
+        $moreInfo = "&nbsp; <a href='http://buy.thulasidas.com/lite/$slug.zip' title='$s1'>$s2 </a>&nbsp; <a href='http://buy.thulasidas.com/$slug' title='$s3. $s4' $onclick>$s5</a>";
+        $version = 'Pro';
+      }
+      else {
+        $moreInfo = "$s2 and <b><a href='http://buy.thulasidas.com/$slug' title='$s3. $s4' $onclick>$s5</a></b>";
+        $version = 'Lite';
+      }
 
       $s6 = sprintf(__('You are using the %s version of %s, which is available in two versions:', 'easy-common'), $version, $value);
       $s7 = sprintf(__('And it costs only $%.2f!', 'easy-common'), $price);
@@ -239,7 +243,7 @@ $moreInfo
 </ul>";
     }
 
-    function renderProText($isPro = true) {
+    function renderProText($isPro = false) {
       echo "<div id='pro' style='display:none'>";
       $this->renderHeadText($isPro);
       echo "</div>";
@@ -248,34 +252,35 @@ $moreInfo
       }
       $plg = $this->plg;
       $slug = $this->slug;
-      $plgKey = $this->getPlgKey();
       $value = '<em><strong>' . $plg['value'] . '</strong></em>';
       $filter = '';
       if (stripos($slug, 'adsense') !== FALSE) {
         $filter = __("e.g., a filter to ensure AdSense policy compliance.", 'easy-common');
       }
-      $toolTip = $plg['title'];
       $price = $plg['price'];
       $onclick = "class='popup'";
 
-      $s1 = sprintf(__('Download the Lite version of %s', 'easy-common'), $plg['value']);
-      $s2 = __('Lite Version', 'easy-common');
       $s3 = sprintf(__('Buy the Pro version of %s for $%.2f', 'easy-common'), $plg['value'], $price);
       $s4 = __('Pro Version', 'easy-common');
       $s5 = __('Buy the Pro Version', 'easy-common');
 
-      $moreInfo = "&nbsp; <a href='http://wordpress.org/extend/plugins/$plgKey/' class='popup' data-height='1024' title='$s1'>$s2 </a>&nbsp; <a href='http://buy.thulasidas.com/$slug' title='$s3' $onclick>$s4</a>";
-      $toolTip .= addslashes('<br />' . $moreInfo);
       $select = rand(1, 4);
-      echo "<div style='background-color:#ffcccc;padding:5px;border:solid 1px;height:238px;overflow-y:auto;margin:0' onmouseover=\"TagToTip('pro', WIDTH, 300, TITLE, '$s5',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\"><div style='font-size:14px;color:#a48;font-variant: small-caps;text-decoration:underline;text-align:center;'><b><a href='http://buy.thulasidas.com/$slug' $onclick>$s4<img src='{$this->plgURL}img/pro-$select.jpg' border='0' alt='Pro Version' style='display: block;margin-left:auto;margin-right:auto;max-height:100px' /></a></b></div>";
+      echo "<div style='background-color:#ffcccc;padding:5px;border:solid 1px;height:238px;overflow-y:auto;margin:0' onmouseover=\"TagToTip('pro', WIDTH, 300, TITLE, '$s5',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, 0, 5])\"><div style='font-size:14px;color:#a48;font-variant: small-caps;text-decoration:underline;text-align:center;'><b><a href='http://buy.thulasidas.com/$slug' $onclick>$s4<img src='{$this->cdn}/pro-$select.jpg' border='0' alt='Pro Version' style='display: block;margin-left:auto;margin-right:auto;max-height:100px' /></a></b></div>";
 
       $s8 = sprintf(__('It costs only $%.2f!', 'easy-common'), $price);
       $s9 = __('Instant download link.', 'easy-common');
-      $value .= '<b><i> Lite</i></b>';
-      $s10 = sprintf(__('Thank you for using %s. The "Pro" version gives you more options.', 'easy-common'), $value);
-      $s11 = __("Consider buying it.", 'easy-common');
-
-      echo "$s10 $filter $s11 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a>";
+      if ($isPro) {
+        $value .= '<b><i> Pro</i></b>';
+        $s6 = sprintf(__("You are enjoying $value with \"Pro\" features.", 'easy-common'), $value);
+        $s7 = __("Please consider buying it, if you haven't already paid for it.", 'easy-common');
+        echo "$s6 $s7 $s8";
+      }
+      else {
+        $value .= '<b><i> Lite</i></b>';
+        $s10 = sprintf(__('Thank you for using %s. The "Pro" version gives you more options.', 'easy-common'), $value);
+        $s11 = __("Consider buying it.", 'easy-common');
+        echo "$s10 $filter $s11 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a>";
+      }
       echo "</div>";
     }
 
@@ -298,7 +303,7 @@ $moreInfo
       $s4 = __('Instant download link.', 'easy-common');
       $s5 = __('Pro Version', 'easy-common');
       $plgKey = $this->getPlgKey($slug);
-      $moreInfo = "<a href='http://wordpress.org/extend/plugins/$plgKey/'>$s2</a> and <b><a href='http://buy.thulasidas.com/$slug' title='$s3. $s4' $onclick>$s5</a></b>";
+      $moreInfo = "<a href='http://wordpress.org/extend/plugins/$plgKey/' class='popup' data-height='1024'>$s2</a> and <b><a href='http://buy.thulasidas.com/$slug' title='$s3. $s4' $onclick>$s5</a></b>";
       $toolTip .= addslashes('<br />' . $moreInfo);
       $why = addslashes($plg['pro']);
 
@@ -327,11 +332,11 @@ $moreInfo
       $roll = rand(0, 4);
       if ($roll > 3) {
         $select = rand(0, 4);
-        echo "<div style='padding:0px;border:none;text-align:center' id='support' onmouseover=\"TagToTip('proservices', WIDTH, 295, TITLE, 'Professional Services', FIX, [this, 0, 5], CLICKCLOSE, true, CLOSEBTN, true)\" ><a href='http://www.thulasidas.com/professional-php-services/' target='_blank'><img src='{$this->cdn}/300x250-0$select.jpg' border='0' style='vertical-align:bottom' alt='Professional Services from the Plugin Author' /></a></div>";
+        echo "<div style='padding:0px;border:none;text-align:center' id='support' ><a href='http://www.thulasidas.com/professional-php-services/' target='_blank' onmouseover=\"TagToTip('proservices', WIDTH, 295, TITLE, 'Professional Services', FIX, [this, 0, 240], CLICKCLOSE, true, CLOSEBTN, true)\"><img src='{$this->cdn}/300x250-0$select.jpg' border='0' style='vertical-align:bottom' alt='Professional Services from the Plugin Author' /></a></div>";
       }
       else {
         extract(self::$premia[$roll]);
-        echo "<div style='padding:0px;border:none;text-align:center' id='support' onmouseover=\"TagToTip('premium-$key', WIDTH, 295, TITLE, '$desc', FIX, [this, 0, 5], CLICKCLOSE, true, CLOSEBTN, true)\" ><a href='http://www.thulasidas.com/$key' target='_blank' class='popup' data-height='1024'><img src='{$this->cdn}/plg-$key.jpg' style='border: solid 1px;vertical-align:bottom' alt='$name - Another Premium Plugin the this Author' /></a></div>";
+        echo "<div style='padding:0px;border:none;text-align:center' id='premium'><a href='http://www.thulasidas.com/$key' target='_blank' class='popup' data-height='1024' onmouseover=\"TagToTip('premium-$key', WIDTH, 295, TITLE, '$desc', FIX, [this, 0, 240], CLICKCLOSE, true, CLOSEBTN, true)\" ><img src='{$this->cdn}/plg-$key.jpg' style='border: solid 1px;vertical-align:bottom' alt='$name - Another Premium Plugin the this Author' /></a></div>";
       }
     }
 
@@ -341,6 +346,7 @@ $moreInfo
 The author of this plugin may be able to help you with your WordPress or plugin customization needs and other PHP related development. <a href='http://www.thulasidas.com/professional-php-services/' target='_blank'>Contact me</a> if you find a plugin that almost, but not quite, does what you are looking for, or if you need any other professional services. If you would like to see my credentials, take a look at <a href='http://www.thulasidas.com/col/Manoj-CV.pdf' target='_blank'>my CV</a>.
 </span>
 ENDDIVS;
+
       foreach (self::$premia as $p) {
         $this->renderPremiumText($p['key']);
       }
@@ -439,14 +445,17 @@ ENDDIVS;
     }
 
     function getPlgInfo() {
-      $me = $this->slug;
+      $slug = $this->slug;
       $plugins = get_plugins();
-      $ret = array('Version' => '', 'Info' => '');
+      $ret = array('Title' => '', 'Version' => '', 'Info' => '');
       $break = '';
       foreach ($plugins as $k => $p) {
+        if (!is_plugin_active($k)) {
+          continue;
+        }
         $baseDir = dirname($k);
-        $baseDirSmall = str_replace("-lite", "", $baseDir);
-        if ($baseDir == $me || $baseDirSmall == $me) {
+        $baseDirSmall = str_replace(array("-lite", "-pro"), "", $baseDir);
+        if ($baseDir == $slug || $baseDirSmall == $slug) {
           $version = $p['Version'];
           if (!empty($_SERVER['HTTP_REFERER'])) {
             $referer = $_SERVER['HTTP_REFERER'];
@@ -455,7 +464,8 @@ ENDDIVS;
             $referer = 'Unknown';
           }
           $info = "$break{$p['Title']} V{$p['Version']} (Referer: $referer)";
-          $ret[] = array('Version' => $version, 'Info' => $info);
+          $ret = array('Title' => $p['Title'], 'Version' => $version, 'Info' => $info);
+          return $ret;
         }
       }
       return $ret;
@@ -484,9 +494,9 @@ ENDDIVS;
       _e('Using our ezSupport Ticket System.', 'easy-common');
       echo "]</em></small>";
       echo "<small style='float:right'><em>[";
-      printf(__('You are using %s (V%s)', 'easy-common'), $value, $info[0]['Version']);
+      printf(__('You are using %s (V%s)', 'easy-common'), $value, $info['Version']);
       echo "]</em></small>";
-      $_SESSION['ezSupport'] = $info[0]['Info'];
+      $_SESSION['ezSupport'] = $info['Info'];
       echo "</div>";
     }
 

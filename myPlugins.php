@@ -123,19 +123,20 @@ $myPlugins['adsense-now'] = array('value' => 'AdSense Now!',
 <li>Ability to suppress ads based on posts and categories.</li>');
 
 $myPlugins['theme-tweaker'] = array('value' => 'Theme Tweaker',
-    'price' => '3.95',
+    'price' => '4.95',
     'share' => false,
     'long' => true,
     'blurb' => '<em><strong>Theme Tweaker</strong></em> is a remarkable plugin that ',
     'desc' => 'lets you modify the colors in your theme with no CSS/PHP editing.',
     'title' => '<em><strong>Theme Tweaker</strong></em> displays the existing colors from your current theme, and gives you a color picker to replace them. It also lets you change them in bulk, like invert all colors, use grey scale etc.',
-    'pro' => 'Note that <em><strong>Theme Tweaker</strong></em> may not work with some themes. Please verify its suitability using the Lite version first. The Lite version of the plugin is fully functional. The Pro version lets you create and save your tweaked <code>style.css</code> files, and even generate your own child themes!',
+    'pro' => 'Note that <em><strong>Theme Tweaker</strong></em> may not work with some themes. Please verify its suitability using the Lite version first. The Lite version of the plugin is fully functional. The Pro version lets you create and save your tweaked <code>style.css</code> files, and even generate your own child themes! It also scans for colors in both your child theme as well as parent theme, regardless of the names of the style files.',
     'benefits' => '<li>Ability to generate and download <code>style.css</code> files with your modified colors.</li>
 <li>Ability to create a child theme so that your changes can be applied even when the underlying theme is updated.</li>
-<li>Scanning for *all* the style files in your theme directory to find all possible color definitions.</li>');
+<li>Scanning for <em>all</em> the style files in your theme directory to find all possible color definitions.</li>
+<li>Ability to tweak colors in both parent and child theme style files.</li>');
 
 $myPlugins['easy-quiz'] = array('value' => 'Easy Quiz',
-    'price' => '2.95',
+    'price' => '3.95',
     'share' => false,
     'long' => true,
     'blurb' => '<em><strong>Easy Quiz</strong></em> is a jQuery quiz plugin that ',
@@ -165,14 +166,15 @@ $myPlugins['easy-text-links'] = array('value' => 'Easy Text Links',
 $myPlugins['easy-text-links-pro'] = $myPlugins['easy-text-links'];
 
 $myPlugins['easy-latex'] = array('value' => 'Easy WP LaTeX',
-    'price' => '2.95',
+    'price' => '4.95',
     'share' => false,
     'long' => true,
     'blurb' => '<em><strong>Easy WP LaTeX</strong></em> is a premium plugin that ',
     'desc' => 'provides a very easy way to display math and equations in your posts.',
     'title' => '<em><strong>Easy WP LaTeX</strong></em> provides a very easy way to display equations or mathematical formulas (typed in as TeX or LaTeX code) in your posts. It translates LaTeX formulas like this [math](a+b)^2 = a^2 + b^2 + 2ab[/math] into this:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://l.wordpress.com/latex.php?latex=(a%2bb)^2%20=%20a^2%20%2b%20b^2%20%2b%202ab&amp;bg=E2E7FF&amp;s=1" style="vertical-align:-70%;" alt="(a+b)^2 = a^2 + b^2 + 2ab" />',
-    'pro' => 'The Lite version of the plugin is fully functional. The Pro version gives you options to cache the equation images so that your pages load faster.',
+    'pro' => 'The Lite version of the plugin is fully functional. The Pro version gives you options to cache the equation images so that your pages load faster. It also gives you the ability to vertically align your equations to the text around them.',
     'benefits' => '<li>Pre-configured cache directory.</li>
+<li>Ability to tweak the vertical alignment of your equations.</li>
 <li>Ability to turn control links on formulas.</li>');
 
 $myPlugins['easy-translator'] = array('value' => 'Easy Translator',
