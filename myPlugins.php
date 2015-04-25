@@ -157,11 +157,11 @@ $myPlugins['easy-text-links'] = array('value' => 'Easy Text Links',
     'blurb' => '<em><strong>Easy Text Links</strong></em> is a robust and modern advertising plugin that ',
     'desc' => 'helps you sell and manage text links on your blog.',
     'title' => '<em><strong>Easy Text Links</strong></em> helps you make extra revenue from your blog by selling text links. Text link advertising can be significantly more lucrative than contextual ads. This plugin automates the insertion and expiration of the links, and helps you with quick reminder emails to your advertisers. If you get a lot of advertising enquiries for text links, this is the right plugin for you.',
-    'pro' => '<em><strong>Easy Text Links</strong></em>, in its light form, is already a powerful plugin. The Pro version lets you integrate seamlessly with Easy PayPal and fully automate your link sales, expiration and reminder emails.',
-    'benefits' => '<li>Automated link sales and management.</li>
-<li>Automated email reminders, and subscription based links.</li>
-<li>Choice of several attractive Advertise Here images.</li>
-<li>Dedicated dedicated and multi-insertable widget for displaying your links.</li>');
+    'pro' => '<em><strong>Easy Text Links</strong></em>, in its light form, is already a powerful plugin. The Pro version lets you integrate seamlessly with EZ PayPal and fully automate your link sales, expiration and reminder emails.',
+    'benefits' => '<li>Automated link sales, expiry and management.</li>
+<li>Ability to approve individual links.</li>
+<li>Choice of several attractive Advertise Here images (WIP). </li>
+<li>Dedicated dedicated and multi-insertable widget for displaying your links (WIP).</li>');
 
 $myPlugins['easy-text-links-pro'] = $myPlugins['easy-text-links'];
 
