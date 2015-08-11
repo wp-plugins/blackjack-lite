@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/blackjack
 Tags: blackjack, casino, gamble, gambling, poker, game, card game
 Requires at least: 2.5
-Tested up to: 4.2
-Stable tag: 1.41
+Tested up to: 4.3
+Stable tag: 1.50
 License: GPL2 or later
 
 Blackjack Lite lets you display a simple Blackjack game to your readers.
@@ -36,13 +36,19 @@ A [pro version](http://buy.thulasidas.com/blackjack "Pro Version of Blackjack fo
 
 == Upgrade Notice ==
 
-Compatibility with WordPress 4.2.
+Compatibility with WordPress 4.3.
 
 == Installation ==
 
-You can install it using the WordPress Plugins -> Add New interface.
+= Searching =
 
-Or,
+The easiest way to install this plugin is to use the WordPress Admin interface. Go to your admin dashboard, find the "Plugins" menu, and click on "Add New". Search for this plugin and click on "Install Now" and follow the WordPress instructions.
+
+= Uploading =
+
+If you want to download it and manually install, you can again use the WordPress dashboard interface. First download the plugin zip file to your local computer. Then go to your admin dashboard, find the "Plugins" menu, and click on "Add New". After clicking on the "Add New" menu item as above, click on "Upload" (below the title "Install Plugins" near the top). Browse for your downloaded zip file, upload it and activate the plugin.
+
+= FTP =
 
 1. Upload the Blackjack plugin (the whole `blackjack-lite` folder) to the '/wp-content/plugins/' directory.
 2. Activate the plugin through the 'Plugins' menu in your blog.
@@ -62,6 +68,7 @@ These rules are not implemented yet. They will be included in later versions (or
 
 == Change Log ==
 
+* V1.50: Compatibility with WordPress 4.3. [Aug 10, 2015]
 * V1.41: Compatibility with WordPress 4.2. [April 25, 2015]
 * V1.31: Documentation changes. [April 11, 2015]
 * V1.30: Adding more checks on player going broke in the pro version. Admin page improvements. [Mar 30, 2015]
