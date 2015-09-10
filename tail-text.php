@@ -87,6 +87,9 @@ if (!$ez->killAuthor) {
           h = jQuery(this).attr('data-height');
           w = 1000;
         }
+        if (jQuery(this).attr('data-width')) {
+          w = jQuery(this).attr('data-width');
+        }
         return ezPopUp(url, title, w, h);
       });
     });

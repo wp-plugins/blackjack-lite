@@ -735,7 +735,7 @@ if (!class_exists("EzBasePlugin")) {
       if ($this->ezTran->printAdminPage()) {
         return;
       }
-      $this->handleSubmits();
+      // $this->handleSubmits(); // This seems to do cause duplicate calls
       $this->mkEzAdmin();
       return $this->ezAdmin;
     }

@@ -253,6 +253,7 @@ $moreInfo
       $plg = $this->plg;
       $slug = $this->slug;
       $value = '<em><strong>' . $plg['value'] . '</strong></em>';
+      $proValue = $value . '<b><i> Pro</i></b>';
       $filter = '';
       if (stripos($slug, 'adsense') !== FALSE) {
         $filter = __("e.g., a filter to ensure AdSense policy compliance.", 'easy-common');
@@ -264,7 +265,7 @@ $moreInfo
       $s4 = __('Pro Version', 'easy-common');
       $s5 = __('Buy the Pro Version', 'easy-common');
 
-      echo "<div style='background-color:#ffcccc;padding:5px;border:solid 1px;height:115px;overflow-y:auto;margin:0' onmouseover=\"TagToTip('pro', WIDTH, 300, TITLE, '$s5',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, -30, 5])\"><div style='font-size:14px;color:#a48;font-variant: small-caps;text-decoration:underline;text-align:center;'><b>$s4</b></div>";
+      echo "<div style='background-color:#ffcccc;padding:5px;border:solid 1px;height:115px;overflow-y:auto;margin:0;min-width:280px'><div style='font-size:14px;color:#a48;font-variant: small-caps;text-decoration:underline;text-align:center;'><b>$s4</b></div><div  onmouseover=\"TagToTip('pro', WIDTH, 300, TITLE, '$s5',STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true, FIX, [this, -20, 55])\">";
 
       $s8 = sprintf(__('It costs only $%.2f!', 'easy-common'), $price);
       $s9 = __('Instant download link.', 'easy-common');
@@ -272,13 +273,21 @@ $moreInfo
         $value .= '<b><i> Pro</i></b>';
         $s6 = sprintf(__("You are enjoying $value with \"Pro\" features.", 'easy-common'), $value);
         $s7 = __("Please consider buying it, if you haven't already paid for it.", 'easy-common');
-        echo "$s6 $s7 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a>";
+        echo "$s6 $s7 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a></div>";
       }
       else {
         $value .= '<b><i> Lite</i></b>';
         $s10 = sprintf(__('Thank you for using %s. The "Pro" version gives you more options.', 'easy-common'), $value);
+        if (!empty($plg['demo'])) {
+          $demo = "[<strong onmouseover=\"Tip('Try a fully functional $proValue Demo')\" onmouseout=\"UnTip()\"><a href='{$plg['demo']}' class='popup' data-height='1200' data-width='1600'>" . __("Demo", 'easy-common') . "</a></strong>]";
+        }
+        else {
+          $demo = "";
+        }
         $s11 = __("Consider buying it.", 'easy-common');
-        echo "$s10 $filter $s11 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a>";
+        $moreInfo = "[<strong onmouseover=\"Tip('Read more about $proValue at Unreal Blog')\" onmouseout=\"UnTip()\"><a href='http://www.thulasidas.com/plugins/$slug' title='More info about it at Unreal Blog' class='popup' data-height='1024' data-width='1200'>More Info</a></strong>]";
+        $buyNow = "[<strong onmouseover=\"Tip('Get $proValue for \$$price')\" onmouseout=\"UnTip()\"><a href='http://buy.thulasidas.com/$slug' title='Get it now for \$$price' class='popup'>Buy Now!</a></strong>]";
+        echo "$s10 $filter $s11 <a href='http://buy.thulasidas.com/$slug' title='$s3. $s9' $onclick>$s8</a></div><br>&emsp;$moreInfo&emsp;$demo&emsp;$buyNow";
       }
       echo "</div>";
     }
@@ -331,7 +340,7 @@ $moreInfo
       $roll = rand(0, 4);
       if ($roll > 3) {
         $select = rand(0, 4);
-        echo "<div style='padding:0px;border:none;text-align:center' id='support' ><a href='http://www.thulasidas.com/professional-php-services/' target='_blank' onmouseover=\"TagToTip('proservices', WIDTH, 295, TITLE, 'Professional Services', FIX, [this, -65, 110], CLICKCLOSE, true, CLOSEBTN, true)\"><img src='{$this->cdn}/300x250-0$select.jpg' border='0' style='vertical-align:bottom;max-width:150px' alt='Professional Services from the Plugin Author' /></a></div>";
+        echo "<div style='padding:0px;border:none;text-align:center' id='support' ><a href='http://www.thulasidas.com/professional-php-services/' target='_blank' onmouseover=\"TagToTip('proservices', WIDTH, 295, TITLE, 'Professional Services', FIX, [this, -65, 110], CLICKCLOSE, true, CLOSEBTN, true)\"><img src='{$this->cdn}/300x250-0$select.jpg' style='vertical-align:bottom;max-width:150px;border:0' alt='Professional Services from the Plugin Author' /></a></div>";
       }
       else {
         extract(self::$premia[$roll]);
@@ -402,8 +411,14 @@ ENDDIVS;
       $proVersion = "&nbsp;&nbsp; <a href='http://buy.thulasidas.com/$slug' title='Buy the Pro version of $value for \$$price' $onclick>Get Pro Version</a><br />";
       $why = "<a href='http://buy.thulasidas.com/$slug' title='Buy the Pro version of the $slug plugin' $onclick><img src='{$this->cdn}/ezpaypal.png' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a>
 <br />" . $plg['pro'];
+      if (!empty($plg['demo'])) {
+        $demo = "[<a href='{$plg['demo']}' class='popup' data-height='1200' data-width='1600'>" . __("Try a demo", 'easy-common') . "</a>]";
+      }
+      else {
+        $demo = "";
+      }
       echo "<li>" . self::makeTextWithTooltip($text, $title, $value, 350) .
-      "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" .
+      "&emsp;$demo<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" .
       self::makeTextWithTooltip($moreInfo, "Read more about $value at its own page.<br />" . $title, "More Information about $value", 300) .
       self::makeTextWithTooltip($liteVersion, $title, "Download $value - the Lite version", 300) .
       self::makeTextWithTooltipTag($slug, $proVersion, $why, "Get $value Pro!", 300) .
@@ -452,9 +467,7 @@ ENDDIVS;
         if (!is_plugin_active($k)) {
           continue;
         }
-        $baseDir = dirname($k);
-        $baseDirSmall = str_replace(array("-lite", "-pro"), "", $baseDir);
-        if ($baseDir == $slug || $baseDirSmall == $slug) {
+        if (strpos($k, $slug) !== false) {
           $version = $p['Version'];
           if (!empty($_SERVER['HTTP_REFERER'])) {
             $referer = $_SERVER['HTTP_REFERER'];

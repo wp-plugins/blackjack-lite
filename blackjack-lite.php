@@ -4,7 +4,7 @@
   Plugin Name: Blackjack
   Plugin URI: http://www.thulasidas.com/plugins/blackjack
   Description: <em>Lite Version</em>: Blackjack game. No complicated setup, no server load or submit, just a shortcode on a page!
-  Version: 1.50
+  Version: 1.51
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */
@@ -189,11 +189,14 @@ else {
         $kill_author = "";
       }
 
-      echo <<<EOF1
+      echo <<<EOF0
 <script type="text/javascript" src="{$this->plgURL}/wz_tooltip.js"></script>
 <div class="wrap" style="width:850px">
 <h2>Blackjack Help</h2>
-<form method="post" action=''>
+<form method="post">
+EOF0;
+      $this->renderNonce();
+      echo <<<EOF1
 <table>
 <tr><td style="width:40%">
 <!--  Help Info here -->
@@ -212,7 +215,6 @@ How can I change the colors?
 </td>
 EOF1;
       include ($this->plgDir . '/head-text.php');
-      $this->renderNonce();
       echo <<<EOF2
 </tr>
 <tr><td colspan="3">
@@ -222,6 +224,7 @@ EOF1;
 <label for='kill_author' onmouseover="Tip('If you find the author links and ads on the plugin admin page distracting or annoying, you can suppress them by checking this box. Please remember to save your options after checking.', WIDTH, 240, TITLE, '', FIX, [this, 5, 5])" onmouseout="UnTip()">
 <input type='checkbox' id='kill_author' name='kill_author' $kill_author /> &nbsp; Kill author links on the admin page?
 </label>
+</b>
 </td></tr>
 </table>
 <div class="submit">
