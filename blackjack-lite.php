@@ -4,7 +4,7 @@
   Plugin Name: Blackjack
   Plugin URI: http://www.thulasidas.com/plugins/blackjack
   Description: <em>Lite Version</em>: Blackjack game. No complicated setup, no server load or submit, just a shortcode on a page!
-  Version: 1.51
+  Version: 1.52
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
  */
